@@ -263,14 +263,34 @@
 ## 🎥 시연 영상
 <table style="text-align: center;" width="100%">
   <tr>
-    <th style="text-align: center;" width="33.33%">메인페이지 기능 영상</th>
-    <th style="text-align: center;" width="33.33%">게임페이지 기능 영상</th>
-    <th style="text-align: center;" width="33.33%">통계페이지 영상</th>
+    <th style="text-align: center;" width="33.33%"><a target="_blank" href="https://www.youtube.com/watch?v=VzQNKqGzXqQ">메인페이지 로그인/회원가입</a></th>
+    <th style="text-align: center;" width="33.33%"><a target="_blank" href="https://www.youtube.com/watch?v=VzQNKqGzXqQ&t=63s">메인페이지 튜토리얼</a></th>
+    <th style="text-align: center;" width="33.33%"><a target="_blank" href="https://www.youtube.com/watch?v=VzQNKqGzXqQ&t=1m57s">메인페이지 아이템 뽑기</a></th>
   </tr>
   <tr>
-    <td style="text-align: center;" width="33.33%"><img src="/uploads/45c73f0cfd85a452787a6b9adcb541f8/고화질_모바일앱_영상_메인페이지.gif" height="400"></td>
-    <td style="text-align: center;" width="33.33%"><img src="/uploads/2fedb1e20cd0e01c39ab360e01eaf02c/게임.gif" height="400"></td>
-    <td style="text-align: center;" width="33.33%"><img src="/uploads/75ba7f6a9ad2894507b6bad29cc3a38c/통계.gif" height="400"></td>
+    <td style="text-align: center;" width="33.33%"><img src="https://rocatrunguide.netlify.app/readme/login.gif" height="400"></td>
+    <td style="text-align: center;" width="33.33%"><img src="https://rocatrunguide.netlify.app/readme/tutorials.gif" height="400"></td>
+    <td style="text-align: center;" width="33.33%"><img src="https://rocatrunguide.netlify.app/readme/drawing.gif" height="400"></td>
+  </tr>
+</table>
+<table style="text-align: center;" width="100%">
+  <tr>
+    <th style="text-align: center;" width="33.33%"><a target="_blank" href="https://www.youtube.com/watch?v=VzQNKqGzXqQ&t=2m32s">메인페이지 기능</a></th>
+    <th style="text-align: center;" width="33.33%"><a target="_blank" href="https://www.youtube.com/watch?v=eVd4SiaJ70M">메인페이지 통계</a></th>
+  </tr>
+  <tr>
+    <td style="text-align: center;" width="33.33%"><img src="https://rocatrunguide.netlify.app/readme/mainpage.gif" height="400"></td>
+    <td style="text-align: center;" width="33.33%"><img src="https://rocatrunguide.netlify.app/readme/statistics.gif" height="400"></td>
+  </tr>
+</table>
+<table style="text-align: center;" width="100%">
+  <tr>
+    <th style="text-align: center;" width="33.33%"><a target="_blank" href="https://www.youtube.com/watch?v=znB11vikRLs">게임페이지 설명/규칙</a></th>
+    <th style="text-align: center;" width="33.33%"><a target="_blank" href="https://www.youtube.com/watch?v=znB11vikRLs&t=62s">게임페이지 플레이</a></th>
+  </tr>
+  <tr>
+    <td style="text-align: center;" width="33.33%"><img src="https://rocatrunguide.netlify.app/readme/game_rule.gif" height="400"></td>
+    <td style="text-align: center;" width="33.33%"><img src="https://rocatrunguide.netlify.app/readme/game_play.gif" height="400"></td>
   </tr>
 </table>
 
