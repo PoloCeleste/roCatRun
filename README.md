@@ -22,9 +22,9 @@
 
 > 🔗 [노션 링크](https://shiny-headlight-8fc.notion.site/SSAFY-12-2-roCatRun-173c09e299c6803b98cfda5e4b7eb304?pvs=4)
 
-> 📲 [배포 URL - 모바일](https://mega.nz/file/R05FhKzS#Zp4Y0e0Iz9jj3SYlEPkaidoyUQZWHS7dAHrzalCTH0w)
+> 📲 [배포 URL - 모바일](https://mega.nz/file/J0YSDJBS#2cbSNpViOWBmhuAgXomcWw9Bbp1kR_VhusU_3g02LjY)
 
-> ⌚ [배포 URL - 워치](https://mega.nz/file/ksRhmQhB#26ZXs7olqZfRZdeSOCuSmBciY686pysShy7IN22BwDk)
+> ⌚ [배포 URL - 워치](https://mega.nz/file/F8Zllb7B#GN8jCAYAc4GyOD4ls1Cn07Qezf53GtUMjJZIE0K3YWw)
 
 
 ### 🏃"친구와 함께 달리는 RPG, 로캣냥(roCatRun)!"
