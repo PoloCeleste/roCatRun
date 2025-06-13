@@ -23,7 +23,6 @@ class GoogleWebViewLoginActivity : Activity() {
     companion object {
         private const val GOOGLE_AUTH_URL = "https://accounts.google.com/o/oauth2/v2/auth"
         private const val CLIENT_ID = "38473355620-38hgd5mqor7ruv519urhtf9c59qedtcd.apps.googleusercontent.com"
-        private const val REDIRECT_URI = "https://i12e205.p.ssafy.io:8080/api/auth/callback/google"
         private const val SCOPE = "email profile"
     }
 
@@ -31,6 +30,9 @@ class GoogleWebViewLoginActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_webview_login)
         Log.i("구글", "구글 시작")
+
+        val apiAddress = getString(R.string.api_address)
+        val redirectUri = "$apiAddress/api/auth/callback/google"
 
         webView = findViewById(R.id.webView)
         webView.settings.apply {
@@ -46,7 +48,7 @@ class GoogleWebViewLoginActivity : Activity() {
             .authority("accounts.google.com")
             .path("/o/oauth2/v2/auth")
             .appendQueryParameter("client_id", CLIENT_ID)
-            .appendQueryParameter("redirect_uri", REDIRECT_URI)
+            .appendQueryParameter("redirect_uri", redirectUri)
             .appendQueryParameter("response_type", "code")
             .appendQueryParameter("scope", SCOPE)
             .appendQueryParameter("access_tpye", "offline")
@@ -57,7 +59,7 @@ class GoogleWebViewLoginActivity : Activity() {
         // 리다이렉트 URI 처리
         webView.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
-                if (url != null && url.startsWith(REDIRECT_URI)) {
+                if (url != null && url.startsWith(redirectUri)) {
                     handleRedirect(url)
                     return true
                 }

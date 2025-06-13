@@ -2,6 +2,7 @@ package com.eeos.rocatrun.socket
 
 import android.content.Context
 import android.util.Log
+import com.eeos.rocatrun.R
 import io.socket.client.IO
 import io.socket.client.Socket
 import okhttp3.Interceptor
@@ -22,7 +23,7 @@ object SocketHandler {
     private var authValue: String = ""
 
     // 웹소켓 통신 베이스 주소
-    private var userPort = "http://i12e205.p.ssafy.io:9092/"
+    private var userPort: String = ""
 
     private lateinit var httpClient: OkHttpClient
 
@@ -31,6 +32,8 @@ object SocketHandler {
         // TokenStorage에서 토큰을 읽어옴
         userToken = TokenStorage.getAccessToken(context) ?: ""
         authValue = "Bearer $userToken"
+
+        userPort = context.getString(R.string.websocket_address)
 
         // OkHttpClient 생성 (인터셉터에 authValue 적용)
         httpClient = OkHttpClient.Builder()

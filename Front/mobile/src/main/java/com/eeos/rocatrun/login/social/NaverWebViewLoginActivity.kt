@@ -23,13 +23,15 @@ class NaverWebViewLoginActivity : Activity() {
     companion object {
         private const val NAVER_AUTH_URL = "https://nid.naver.com/oauth2.0/authorize"
         private const val CLIENT_ID = "a03_KcmGfXFxM8hvVoGL"
-        private const val REDIRECT_URI = "https://i12e205.p.ssafy.io:8080/api/auth/callback/naver"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_webview_login)
         Log.i("네이버", "네이버 시작")
+
+        val apiAddress = getString(R.string.api_address)
+        val redirectUri = "$apiAddress/api/auth/callback/naver"
 
         webView = findViewById(R.id.webView)
         webView.settings.javaScriptEnabled = true
@@ -40,7 +42,7 @@ class NaverWebViewLoginActivity : Activity() {
             .authority("nid.naver.com")
             .path("/oauth2.0/authorize")
             .appendQueryParameter("client_id", CLIENT_ID)
-            .appendQueryParameter("redirect_uri", REDIRECT_URI)
+            .appendQueryParameter("redirect_uri", redirectUri)
             .appendQueryParameter("response_type", "code")
             .appendQueryParameter("state", "state")
             .build()
@@ -50,7 +52,7 @@ class NaverWebViewLoginActivity : Activity() {
         // 리다이렉트 URI 처리
         webView.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
-                if (url != null && url.startsWith(REDIRECT_URI)) {
+                if (url != null && url.startsWith(redirectUri)) {
                     handleRedirect(url)
                     return true
                 }

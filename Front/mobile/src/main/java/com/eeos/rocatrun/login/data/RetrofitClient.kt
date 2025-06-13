@@ -1,30 +1,35 @@
+// RetrofitClient.kt
 package com.eeos.rocatrun.login.data
 
+import android.content.Context
+import com.eeos.rocatrun.R
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
-    private const val BASE_URL = "https://i12e205.p.ssafy.io:8080/"
+    private lateinit var apiServiceInstance: ApiService
 
-    // 로그 인터셉터 추가
-    private val loggingInterceptor = HttpLoggingInterceptor().apply {
-        level = HttpLoggingInterceptor.Level.BODY  // 요청 및 응답의 모든 내용을 로그로 출력
-    }
+    fun initialize(context: Context) {
+        val apiAddress = context.getString(R.string.api_address) + "/"
 
-    // OkHttp 클라이언트 설정
-    private val client = OkHttpClient.Builder()
-        .addInterceptor(loggingInterceptor)
-        .build()
+        val loggingInterceptor = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
 
-    // Retrofit 인스턴스 생성
-    val apiService: ApiService by lazy {
-        Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .client(client)  // 커스텀 클라이언트 추가
+        val client = OkHttpClient.Builder()
+            .addInterceptor(loggingInterceptor)
+            .build()
+
+        apiServiceInstance = Retrofit.Builder()
+            .baseUrl(apiAddress)
+            .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiService::class.java)
     }
+
+    val apiService: ApiService
+        get() = apiServiceInstance
 }

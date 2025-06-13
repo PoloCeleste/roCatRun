@@ -23,13 +23,15 @@ class KakaoWebViewLoginActivity : Activity() {
     companion object {
         private const val KAKAO_AUTH_URL = "https://kauth.kakao.com/oauth/authorize"
         private const val CLIENT_ID = "08554835b2f79b10c4673f267862ac7f"
-        private const val REDIRECT_URI = "https://i12e205.p.ssafy.io:8080/api/auth/callback/kakao"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_webview_login)
         Log.i("카카오", "카카오 시작")
+
+        val apiAddress = getString(R.string.api_address)
+        val redirectUri = "$apiAddress/api/auth/callback/kakao"
 
         webView = findViewById(R.id.webView)
         webView.settings.javaScriptEnabled = true
@@ -40,7 +42,7 @@ class KakaoWebViewLoginActivity : Activity() {
             .authority("kauth.kakao.com")
             .path("/oauth/authorize")
             .appendQueryParameter("client_id", CLIENT_ID)
-            .appendQueryParameter("redirect_uri", REDIRECT_URI)
+            .appendQueryParameter("redirect_uri", redirectUri)
             .appendQueryParameter("response_type", "code")
             .build()
 
@@ -49,7 +51,7 @@ class KakaoWebViewLoginActivity : Activity() {
         // 리다이렉트 URI 처리
         webView.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
-                if (url != null && url.startsWith(REDIRECT_URI)) {
+                if (url != null && url.startsWith(redirectUri)) {
                     handleRedirect(url)
                     return true
                 }
