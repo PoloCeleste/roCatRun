@@ -181,4 +181,4 @@ INSERT INTO levels (level, required_exp) VALUES
 (49, 132000),
 (50, 137200);
 
-INSERT INTO `boss` VALUES (1,'https://rocatrun-bucket.s3.ap-northeast-2.amazonaws.com/boss_img/img_-_monster2.png','사채업자 해파리',150,20,0,'1인당 4km',450,60,'모든 유저가 아이템 2회 사용',1800,1000),(2,'https://rocatrun-bucket.s3.ap-northeast-2.amazonaws.com/boss_img/img_-_monster3.png','땅콩수집 로봇',300,40,1,'1인당 5km',750,100,'모든 유저가 아이템 2회 사용',1800,1250),(3,'https://rocatrun-bucket.s3.ap-northeast-2.amazonaws.com/boss_img/img_-_monster1.png','나일론 마스크',525,70,2,'1인당 6km',1200,160,'모든 유저가 아이템 2회 사용',1800,1500);
+INSERT INTO `boss` VALUES (1,'https://rocatrun-bucket.s3.ap-northeast-2.amazonaws.com/boss_img/img_-_monster2.png','사채업자 해파리',150,20,0,'1인당 4km',60,450,'모든 유저가 아이템 2회 사용',1000,1800), (2,'https://rocatrun-bucket.s3.ap-northeast-2.amazonaws.com/boss_img/img_-_monster3.png','땅콩수집 로봇',300,40,1,'1인당 5km',100,750,'모든 유저가 아이템 2회 사용',1250,2000), (3,'https://rocatrun-bucket.s3.ap-northeast-2.amazonaws.com/boss_img/img_-_monster1.png','나일론 마스크',525,70,2,'1인당 6km',160,1200,'모든 유저가 아이템 2회 사용',1500,2400);
