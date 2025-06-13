@@ -12,6 +12,11 @@ CREATE TABLE members (
     gender VARCHAR(50)
 );
 
+CREATE TABLE levels (
+    level INT PRIMARY KEY,
+    required_exp INT NOT NULL
+);
+
 CREATE TABLE game_characters (
     character_id BIGINT AUTO_INCREMENT PRIMARY KEY,
     nickname VARCHAR(8) NOT NULL UNIQUE,
@@ -27,53 +32,14 @@ CREATE TABLE game_characters (
     FOREIGN KEY (member_id) REFERENCES members(member_id) ON DELETE CASCADE
 );
 
-CREATE TABLE inventories (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    game_character_id BIGINT NOT NULL,
-    FOREIGN KEY (game_character_id) REFERENCES game_characters(character_id) ON DELETE CASCADE
-);
-
-CREATE TABLE game_results (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    character_id BIGINT NOT NULL,
-    boss_level VARCHAR(50) NOT NULL,
-    is_cleared BOOLEAN NOT NULL,
-    running_time BIGINT,
-    total_distance DOUBLE,
-    pace_avg DOUBLE,
-    heart_rate_avg DOUBLE,
-    cadence_avg DOUBLE,
-    item_use_count INT,
-    reward_exp INT,
-    reward_coin INT,
-    calories INT,
-    played_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    FOREIGN KEY (character_id) REFERENCES game_characters(character_id) ON DELETE CASCADE
-);
-
-
-CREATE TABLE inventories (
-    inventory_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    character_id BIGINT,
-    item_id BIGINT,
-    isEquipped BOOLEAN NOT NULL DEFAULT FALSE,
-    FOREIGN KEY (character_id) REFERENCES game_characters(character_id) ON DELETE CASCADE,
-    FOREIGN KEY (item_id) REFERENCES items(item_id) ON DELETE SET NULL
-);
-
-CREATE TABLE levels (
-    level INT PRIMARY KEY,
-    required_exp INT NOT NULL
-);
-
 CREATE TABLE boss (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    difficulty VARCHAR(50) NOT NULL,
-    time_limit INT NOT NULL,
-    hp_per_km INT NOT NULL,
-    distance VARCHAR(50) NOT NULL,
     boss_image VARCHAR(255) NOT NULL,
     boss_name VARCHAR(100) NOT NULL,
+    time_limit INT NOT NULL,
+    hp_per_km INT NOT NULL,
+    difficulty VARCHAR(200) NOT NULL,
+    distance VARCHAR(50) NOT NULL,
     exp_reward_min INT NOT NULL,
     exp_reward_max INT NOT NULL,
     fever_condition VARCHAR(255),
@@ -83,14 +49,14 @@ CREATE TABLE boss (
 
 CREATE TABLE items (
     item_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,          
-    korean_name VARCHAR(255) NOT NULL,   
-    description TEXT NOT NULL,         
-    is_gif BOOLEAN NOT NULL,           
+    name VARCHAR(255) NOT NULL,
+    korean_name VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    is_gif BOOLEAN NOT NULL,
     category ENUM('AURA', 'BALLOON', 'HEADBAND', 'PAINT') NOT NULL, 
     rarity ENUM('NORMAL', 'RARE', 'EPIC', 'UNIQUE', 'LEGENDARY') NOT NULL,
-    probability DOUBLE NOT NULL,        
-    price INT NOT NULL                  
+    probability DOUBLE NOT NULL,
+    price INT NOT NULL
 );
 
 INSERT INTO items (name, korean_name, description, is_gif, category, rarity, probability, price) VALUES
@@ -182,3 +148,31 @@ INSERT INTO levels (level, required_exp) VALUES
 (50, 137200);
 
 INSERT INTO `boss` VALUES (1,'https://rocatrun-bucket.s3.ap-northeast-2.amazonaws.com/boss_img/img_-_monster2.png','사채업자 해파리',150,20,0,'1인당 4km',60,450,'모든 유저가 아이템 2회 사용',1000,1800), (2,'https://rocatrun-bucket.s3.ap-northeast-2.amazonaws.com/boss_img/img_-_monster3.png','땅콩수집 로봇',300,40,1,'1인당 5km',100,750,'모든 유저가 아이템 2회 사용',1250,2000), (3,'https://rocatrun-bucket.s3.ap-northeast-2.amazonaws.com/boss_img/img_-_monster1.png','나일론 마스크',525,70,2,'1인당 6km',160,1200,'모든 유저가 아이템 2회 사용',1500,2400);
+
+CREATE TABLE game_results (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    character_id BIGINT NOT NULL,
+    boss_level VARCHAR(50) NOT NULL,
+    is_cleared BOOLEAN NOT NULL,
+    running_time BIGINT,
+    total_distance DOUBLE,
+    pace_avg DOUBLE,
+    heart_rate_avg DOUBLE,
+    cadence_avg DOUBLE,
+    item_use_count INT,
+    reward_exp INT,
+    reward_coin INT,
+    calories INT,
+    played_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    FOREIGN KEY (character_id) REFERENCES game_characters(character_id) ON DELETE CASCADE
+);
+
+
+CREATE TABLE inventories (
+    inventory_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    character_id BIGINT,
+    item_id BIGINT,
+    isEquipped BOOLEAN NOT NULL DEFAULT FALSE,
+    FOREIGN KEY (character_id) REFERENCES game_characters(character_id) ON DELETE CASCADE,
+    FOREIGN KEY (item_id) REFERENCES items(item_id) ON DELETE SET NULL
+);
